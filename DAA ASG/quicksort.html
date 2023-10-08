@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>180-QUICKSORT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=Roboto:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    p{
+      font-family:'Pixelify Sans';
+      text-align: center;
+    }
+    
+
+    .title{
+      display:grid;
+      font-size: 40px;
+      color: rgb(0, 0, 0);
+      grid-template-columns: 250px;
+      text-align: center;
+      justify-content: center; 
+      padding-top: 5px;
+      padding-bottom: 5px;
+      font-family:'Pixelify Sans';
+    }
+    .process{
+      display: grid;
+    }
+    
+    .arrays{
+      display: grid;
+    }
+    .final-a,
+    .a-1a,
+    .a-1,
+    .a-1b,
+    .a-1c,
+    .a-1d,
+    .a-1e,
+    .a-1f,
+    .a-1g,
+    .a-1h{
+      display:grid;
+      grid-template-columns: repeat(7, 50px);
+      justify-content: center; 
+      text-align:center ;
+      column-gap: 7px;
+      font-size: 20px;
+      font-weight: bold;
+      height: 55px;
+    }
+    .a-2{
+      display: grid;
+      justify-content: center; 
+      text-align:center ;
+    }
+
+    .indices{
+      display:grid;
+      grid-template-columns: repeat(7, 50px);
+      column-gap: 7px;
+      font-family: 'Pixelify Sans';
+      justify-content: center; 
+      text-align:center ;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .a-3{
+      display: grid;
+      justify-content: center; 
+      text-align:center ;
+    }
+    .a-6,
+    .a-5,
+    .a-4,
+    .a-4b,
+    .a-sp1,
+    .a-sp2{
+      display: grid;
+      justify-content: center; 
+      text-align:center ;
+    }
+   
+    
+    .arrow{
+    display: grid;
+    grid-template-columns: 200px 200px;
+    gap: 200px;
+    justify-content: center;
+    }
+    .down-arr2
+    {
+      text-align: center;
+    }
+    .miss1,
+    .miss2{
+    display: grid;
+    grid-template-columns: 60px 60px;
+    gap: 5px;
+    justify-content: center;
+    }
+    
+   
+    .down-b-a{
+      text-align: left;
+    }
+    .img-1{
+      text-align: right;
+    }
+    .split-a
+    {
+      display:grid;
+      grid-template-columns: 150px 150px;
+      gap: 275px;
+      justify-content: center;
+    }
+    .arr-1,
+    .arr-2,
+    .arr-1a,
+    .arr-2a,
+    .arr-1b,
+    .arr-2b{
+      display:grid;
+      grid-template-columns: 50px 50px 50px;
+      justify-content: center; 
+      text-align:center ;
+      column-gap: 7px;
+      font-size: 20px;
+      font-weight: bold;
+      height: 55px;
+    }
+   
+    .arr-2c
+    {
+      display:grid;
+      grid-template-columns: 50px 50px;
+      justify-content: left; 
+      text-align:center ;
+      column-gap: 50px;
+      font-size: 20px;
+      font-weight: bold;
+      height: 55px;
+    }
+    .arr-1c{
+      display:grid;
+      grid-template-columns: 50px 50px;
+      justify-content: right; 
+      text-align:center ;
+      column-gap: 50px;
+      font-size: 20px;
+      font-weight: bold;
+      height: 55px;
+    }
+    .arr-2d{
+      display:grid;
+      grid-template-columns: 50px;
+      justify-content: left; 
+      text-align:center ;
+      column-gap: 7px;
+      font-size: 20px;
+      font-weight: bold;
+      height: 55px; 
+    }
+
+    .arr-1d{
+      display:grid;
+      grid-template-columns: 50px;
+      justify-content: right; 
+      text-align:center ;
+      column-gap: 7px;
+      font-size: 20px;
+      font-weight: bold;
+      height: 55px; 
+    }
+   
+   
+    pre {
+        white-space: pre-wrap; 
+        font-family: 'Courier New', monospace; 
+    }
+    .algo{
+      display: grid;
+      justify-content: center;
+      grid-template-columns: 750px;
+    }
+    .daa{
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .a-1{
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out 0.5s forwards;
+    }
+    .a-2{
+      opacity: 0;
+    animation: fadeIn 0.5s ease-in-out 1.5s forwards;
+    }
+
+    .a-1a{
+      opacity: 0;
+    animation: fadeIn 0.5s ease-in-out 10s forwards;
+    }
+    .index2{
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out 11.5s forwards;
+    }
+    .index3{
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out 12.5s forwards;
+    }
+    .a-3{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 13.5s forwards;
+    }
+    .a-1b{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 16s forwards;
+    }
+    .a-1c{
+    opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 17.5s forwards; 
+    }
+    .a-4{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 18.5s forwards;       
+    }
+    .a-4b{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 20s forwards;       
+    }
+    .index6,
+    .index7,
+    .a-1d{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 23s forwards;       
+    } 
+    .a-5{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 25s forwards;  
+    }
+    .a-1e{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 32s forwards; 
+    }
+    .a-1f{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 34s forwards; 
+    }
+    .a-1g,
+    .a-6{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 36s forwards;  
+    }
+    .a-1h{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 46s forwards;  
+    }
+    .img-1{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 47s forwards;  
+    }
+    .arr-1{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 48s forwards; 
+    }
+    .a-7{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 49s forwards; 
+    }
+    .arr-1a{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 55s forwards; 
+    }
+  
+    .down-a{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 56.5s forwards; 
+    }
+   .c1{
+    opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 58s forwards; 
+   }
+    .down-a-a{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 59s forwards; 
+    }
+    .c3{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 60.5s forwards; 
+    }
+  
+    .img-2{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 61.5s forwards; 
+    }
+    .arr-2{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 62.5s forwards; 
+    }
+    .a-9{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 64s forwards; 
+    }
+    .arr-2a{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 72s forwards; 
+    }
+    .down-arr2{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 73.5s forwards; 
+    }
+    .c6{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 74.5s forwards; 
+    }
+    .down-b-a{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 76s forwards; 
+    }
+    .c27{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 77s forwards; 
+    }
+    .final-a,
+    .ff{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 78.5s forwards; 
+    }
+    .algo{
+      opacity: 0;
+    animation: fadeIn 0.65s ease-in-out 79.5s forwards; 
+    }
+
+    
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        50%{
+          opacity: 0.5;
+        }
+        100%{
+          opacity: 1;
+        }
+  
+    }
+
+.index5,
+.index1
+{
+    opacity: 0;
+    animation: appearAnimation 1s linear 10.5s forwards;
+}
+
+.index4
+{
+    opacity: 0;
+    animation: appearAnimation 1s linear 11.5s forwards;
+}
+
+@keyframes appearAnimation {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+    50% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100%{
+      opacity:0;
+      visibility: hidden;
+    }
+}
+
+
+    
+
+  
+  </style>
+ <SCRIPT>
+  function ShowAndHide() {
+      var x = document.getElementById('content');
+      if (x.style.display == 'none') 
+      {
+          x.style.display = 'block';
+          
+      } 
+      else 
+      {
+          x.style.display = 'none';
+      }
+  }
+
+  
+
+
+  </SCRIPT>
+</head>
+<body>
+
+  <div class="title">
+    QUICK SORT 
+  </div>
+  <div class="button-container" style="text-align: center;">
+    <BUTTON ONCLICK="ShowAndHide()">Click me</BUTTON>
+  </div>
+  <div>
+    <p>
+
+    </p>
+    <p>
+
+    </p>
+  </div>
+  <div id="content" class="hidden" STYLE="display:none">
+    <div class="full">
+      <div class="process">
+
+        <div class="arrays">
+          <div class="a-1">
+             <div style="background-color: grey; padding-top: 16px; border: 3px solid; ">
+              5
+             </div>
+             <div style="background-color: grey; padding-top: 16px;">
+              3
+             </div>
+             <div style="background-color: grey; padding-top: 16px;">
+              7
+             </div>
+             <div style="background-color: grey; padding-top: 16px;">
+              2
+             </div>
+             <div style="background-color: grey; padding-top: 16px;">
+              1
+             </div>
+             <div style="background-color: grey; padding-top: 16px;">
+              27
+             </div>
+             <div style="background-color: grey; padding-top: 16px;">
+              6
+             </div>
+          </div>
+          <div class="a-2">
+            <p>LETS SORT THIS ARRAY WITH FIRST ELEMENT AS PIVOT<br>
+              <strong>Working of partition function</strong>
+            <br>i AND j are two running indices
+            <br>i searches for element greater than pivot and runs from left to right
+            <br>j searches for element less than pivot and runs from right to left </p>
+          </div>
+          <div class="a-1a">
+               <div style="background-color: grey; padding-top: 16px; border: 3px solid; ">
+                5
+               </div>
+               <div style="background-color: grey; padding-top: 16px;">
+                3
+               </div>
+               <div style="background-color: grey; padding-top: 16px;">
+                7
+               </div>
+               <div style="background-color: grey; padding-top: 16px;">
+                2
+               </div>
+               <div style="background-color: grey; padding-top: 16px;">
+                1
+               </div>
+               <div style="background-color: grey; padding-top: 16px;">
+                27
+               </div>
+               <div style="background-color: grey; padding-top: 16px;">
+                6
+              </div>
+            </div>
+        
+            
+          <div class="indices">
+              <div >
+                <p> </p>
+               </div>
+               <div class="index1">
+                i
+               </div>
+               <div class="index2">
+                i
+               </div>
+               <div >
+                <p> </p>
+               </div>
+               <div class="index3">
+                j
+               </div>
+               <div class="index4" >
+                j
+               </div>
+               <div class="index5">
+                j
+               </div>
+          </div>
+          
+          <div class="a-3">
+            <p>We found the ith and jth element<br>So let's swap them</p>
+          </div>
+
+          <div class="a-1b">
+            <div style="background-color: grey; padding-top: 16px; border: 3px solid; ">
+             5
+            </div>
+            <div style="background-color: grey; padding-top: 16px;">
+             3
+            </div>
+            <div  style="background-color: grey; padding-top: 16px; border: 3px solid; border-color: rgb(253, 2, 2);">
+             7
+            </div>
+            <div style="background-color: grey; padding-top: 16px;">
+             2
+            </div>
+            <div style="background-color: grey; padding-top: 16px; border: 3px solid; border-color: rgb(253,2,2);">
+             1
+            </div>
+            <div style="background-color: grey; padding-top: 16px;">
+             27
+            </div>
+            <div style="background-color: grey; padding-top: 16px;">
+             6
+           </div>
+          
+        
+          </div>
+          <div><p> </p></div>
+          <div class="a-1c">
+            <div style="background-color: grey; padding-top: 16px; border: 3px solid; ">
+             5
+            </div>
+            <div style="background-color: grey; padding-top: 16px;">
+             3
+            </div>
+            <div class="a123" id="id1" style="background-color: grey; padding-top: 16px; border: 3px solid; border-color: rgb(253, 2, 2);">
+             1
+            </div>
+            <div style="background-color: grey; padding-top: 16px;">
+             2
+            </div>
+            <div class="a345" id="id2" style="background-color: grey; padding-top: 16px; border: 3px solid; border-color: rgb(253,2,2);">
+             7
+            </div>
+            <div style="background-color: grey; padding-top: 16px;">
+             27
+            </div>
+            <div style="background-color: grey; padding-top: 16px;">
+             6
+           </div>
+     
+        
+          </div>
+          <div class="a-4">
+            <p>Now again run the indices from where we left</p>
+          </div>
+
+          <div class="a-4b">
+            <p>i and j found the maximum and minimum values</p>
+          </div>
+
+        
+          <div class="a-1d">
+            <div style="background-color: grey; padding-top: 16px; border: 3px solid; ">
+             5
+            </div>
+            <div style="background-color: grey; padding-top: 16px;">
+             3
+            </div>
+            <div style="background-color: grey; padding-top: 16px;">
+             1
+            </div>
+            <div style="background-color: grey; padding-top: 16px;">
+             2
+            </div>
+            <div style="background-color: grey; padding-top: 16px;">
+             7
+            </div>
+            <div style="background-color: grey; padding-top: 16px;">
+             27
+            </div>
+            <div style="background-color: grey; padding-top: 16px;">
+             6
+           </div>
+          </div>
+     
+         
+       <div class="indices">
+           <div >
+             <p> </p>
+            </div>
+            <div >
+             <p> </p>
+            </div>
+            <div >
+              <p> </p>
+            </div>
+            <div class="index6" >
+             j
+            </div>
+            <div class="index7">
+             i
+            </div>
+            <div >
+             <p> </p>
+            </div>
+            <div >
+             <p> </p>
+            </div>
+       </div>
+       <div class="a-5">
+        <p>This is the point where we stop running indices as i crossed j [i > = j]<br>Now we need to swap the jth element and pivot element</p>
+      </div>
+          
+      <div class="a-1e">
+        <div style="background-color: grey; padding-top: 16px; border: 3px solid; border-color: rgb(253, 2, 2); ">
+         5
+        </div>
+        <div style="background-color: grey; padding-top: 16px;">
+         3
+        </div>
+        <div style="background-color: grey; padding-top: 16px;">
+         1
+        </div>
+        <div style="background-color: grey; padding-top: 16px;border: 3px solid; border-color: rgb(253, 2, 2);">
+         2
+        </div>
+        <div style="background-color: grey; padding-top: 16px;">
+         7
+        </div>
+        <div style="background-color: grey; padding-top: 16px;">
+         27
+        </div>
+        <div style="background-color: grey; padding-top: 16px;">
+         6
+       </div>
+      </div>
+      <div><p> </p></div>
+          <div class="a-1f">
+            <div style="background-color: grey; padding-top: 16px; border: 3px solid; border-color: rgb(253, 2, 2); ">
+              2
+             </div>
+             <div style="background-color: grey; padding-top: 16px;">
+              3
+             </div>
+             <div style="background-color: grey; padding-top: 16px;">
+              1
+             </div>
+             <div style="background-color: grey; padding-top: 16px; border: 3px solid;border-color: rgb(253, 2, 2); ">
+              5
+             </div>
+             <div style="background-color: grey; padding-top: 16px;">
+              7
+             </div>
+             <div style="background-color: grey; padding-top: 16px;">
+              27
+             </div>
+             <div style="background-color: grey; padding-top: 16px;">
+              6
+             </div>
+          </div>
+          <div><p> </p></div>
+          <div class="a-1g">
+            <div style="background-color: grey; padding-top: 16px; ">
+              2
+             </div>
+             <div style="background-color: grey; padding-top: 16px;">
+              3
+             </div>
+             <div style="background-color: grey; padding-top: 16px;">
+              1
+             </div>
+             <div style="background-color: grey; padding-top: 16px; border: 3px solid;">
+              5
+             </div>
+             <div style="background-color: grey; padding-top: 16px;">
+              7
+             </div>
+             <div style="background-color: grey; padding-top: 16px;">
+              27
+             </div>
+             <div style="background-color: grey; padding-top: 16px;">
+              6
+             </div>
+          </div>
+          <div class="a-6">
+            <p>The Partition function has done its job<br>
+              We can see the left side of pivot element are less than pivot and elements on right isde are greater<br>
+              Now the recursive call of quicksort starts executing and splits the array into two using pivot element
+            </p>
+          </div>
+          <div class="a-1h">
+            <div style="background-color: grey; padding-top: 16px; ">
+              2
+             </div>
+             <div style="background-color: grey; padding-top: 16px;">
+              3
+             </div>
+             <div style="background-color: grey; padding-top: 16px;">
+              1
+             </div>
+             <div style="background-color: grey; padding-top: 16px; border: 3px solid;">
+              5
+             </div>
+             <div style="background-color: grey; padding-top: 16px;">
+              7
+             </div>
+             <div style="background-color: grey; padding-top: 16px;">
+              27
+             </div>
+             <div style="background-color: grey; padding-top: 16px;">
+              6
+             </div>
+          </div>
+          <div class="arrow">
+            <div class="img-1">
+              <img src="arrow1.jpg" width="70px">
+            </div>
+            <div class="img-2">
+              <img src="arrow.jpg" width="70px">
+            </div>
+          </div>
+
+          <div class="split-a">
+            <div class="s-1">
+              <div class="arr-1">
+                <div style="background-color: grey; padding-top: 16px;border: 3px solid; ">
+                  2
+                </div>
+                <div style="background-color: grey; padding-top: 16px; ">
+                  3
+                </div>
+                <div style="background-color: grey; padding-top: 16px; ">
+                  1
+                </div>
+              </div>
+              <div class="a-7">
+                <p>Partition and quicksort functions will be called for this sub array</p>
+              </div>
+              <div class="arr-1a">
+                <div style="background-color: grey; padding-top: 16px; ">
+                  1
+                </div>
+                <div style="background-color: grey; padding-top: 16px; border: 3px solid; ">
+                  2
+                </div>
+                <div style="background-color: grey; padding-top: 16px; ">
+                  3
+                </div>
+              </div>
+             
+            <div class="miss1">
+              <div class="down-a">
+                <img src="arrow1.jpg" width="60px">
+              </div>
+              <div class="down-a-a">
+                <img src="arrow.jpg" width="60px">
+              </div>
+            </div>
+              <div class="arr-1c">
+                <div class="c1" style="background-color: grey; padding-top: 16px;border: 3px solid; ">
+                  1
+                </div>
+                <div class="c3" style="background-color: grey; padding-top: 16px; border: 3px solid; ">
+                  3
+                </div>
+              </div>
+             
+              
+
+
+              
+            </div>
+            <div class="s-2">
+              <div class="arr-2">
+                <div style="background-color: grey; padding-top: 16px; border: 3px solid; ">
+                  7
+                </div>
+                <div style="background-color: grey; padding-top: 16px; ">
+                  27
+                </div>
+                <div style="background-color: grey; padding-top: 16px; ">
+                  6
+                </div>
+              </div>
+              <div class="a-9">
+                <p>
+                This call gets executed only after the left call completes all of its child recursive calls.
+                </p>
+
+              </div>
+              <div class="arr-2a">
+                <div style="background-color: grey; padding-top: 16px;">
+                  6
+                </div>
+                <div style="background-color: grey; padding-top: 16px; border: 3px solid ">
+                  7
+                </div>
+                <div style="background-color: grey; padding-top: 16px; ">
+                  27
+                </div>
+              </div>
+            <div class="miss2">
+              <div class="down-arr2">
+                <img src="arrow1.jpg" width="60px">
+              </div>
+              <div class="down-b-a">
+                <img src="arrow.jpg" width="60px">
+              </div>
+            </div>
+
+              <div class="arr-2c">
+                <div class="c6" style="background-color: grey; padding-top: 16px; border: 3px solid;">
+                  6
+                </div>
+                <div  class="c27" style="background-color: grey; padding-top: 16px;border: 3px solid; ">
+                  27
+                </div>
+              </div>
+              
+              
+
+              
+            </div>
+            
+          
+          </div>
+          <div><p></p></div>
+          <div class="final-a">
+            <div style="background-color: grey; padding-top: 16px;border: 3px solid;">
+             1
+            </div>
+            <div style="background-color: grey; padding-top: 16px;border: 3px solid;">
+             2
+            </div>
+            <div style="background-color: grey; padding-top: 16px;border: 3px solid;">
+             3
+            </div>
+            <div style="background-color: grey; padding-top: 16px;border: 3px solid;">
+             5
+            </div>
+            <div style="background-color: grey; padding-top: 16px;border: 3px solid;">
+             6
+            </div>
+            <div style="background-color: grey; padding-top: 16px;border: 3px solid;">
+             7
+            </div>
+            <div style="background-color: grey; padding-top: 16px;border: 3px solid;">
+             27
+            </div>
+          </div>
+          <div class="ff" style="font-size: large;">
+            <p>FINALLY THE ARRAY IS SORTED</p>
+          </div>
+         
+  
+        </div>
+
+      </div>
+    </div>
+      <div class="algo">
+       <div style="border: solid;">
+        <h1 style="font-family: 'Pixelify Sans';text-align: center;">QuickSort Algorithm</h1>
+        <pre>
+            <code>
+              QuickSort(arr, low, high)
+                  if low < high
+                      // Partition the array and get the pivot element
+                      pivotIndex = Partition(arr, low, high)
+              
+                      // Recursively sort elements before and after the pivot
+                      QuickSort(arr, low, pivotIndex - 1)
+                      QuickSort(arr, pivotIndex + 1, high)
+              
+              Partition(arr, low, high)
+                  // Choose the first element as the pivot
+                  pivot = arr[low]
+                  
+                  i = low + 1
+                  j = high
+              
+                  repeat until i > j
+                      while i <= j and arr[i] <= pivot
+                          i = i + 1
+                      
+                      while i <= j and arr[j] >= pivot
+                          j = j - 1
+                      
+                      if i <= j
+                          // Swap arr[i] and arr[j]
+                          Swap(arr[i], arr[j])
+              
+                  // Swap the pivot element with arr[j] to put it in its correct position
+                  Swap(arr[low], arr[j])
+              
+                  // Return the index of the pivot element
+                  return j
+            </code>
+        </pre>
+      </div>
+      </div>
+  </div>
+
+
+        
+
+      
+    
+    
+</body>
+</html>
